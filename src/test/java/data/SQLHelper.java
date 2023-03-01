@@ -1,12 +1,10 @@
 package data;
-
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
@@ -33,11 +31,11 @@ public class SQLHelper {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
     }
 
-    public static DataHelper.VerificationCode getVerificationCode() {
+    public static DataHelper.verificationCode getVerificationCode() {
         var codeSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
         try (var conn = getConn()) {
             var code = runner.query(conn, codeSQL, new ScalarHandler<String>());
-            return new DataHelper.VerificationCode(code);
+            return new DataHelper.verificationCode(code);
         } catch (SQLException exception) {
             exception.printStackTrace();
         }

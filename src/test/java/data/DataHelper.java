@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import java.util.Locale;
-
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
@@ -44,8 +43,8 @@ public class DataHelper {
         return new AuthInfo(generateRandomLogin(), generateRandomPassword());
     }
 
-    public static VerificationCode generateRandomVerificationCode() {
-        return new VerificationCode(faker.numerify("######"));
+    public static verificationCode generateRandomVerificationCode() {
+        return new verificationCode(faker.numerify("######"));
     }
 
     @Value
@@ -55,7 +54,7 @@ public class DataHelper {
     }
 
     @Value
-    public static class VerificationCode {
+    public static class verificationCode {
         String code;
     }
 
